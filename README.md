@@ -733,17 +733,13 @@ Follow the below steps to set up Prometheus and view metrics for travel_agency s
 
 - Set the below configurations in the `ballerina.conf` file in the project root.
 ```ballerina
-   [observability.metrics.prometheus]
-   # Flag to enable Prometheus HTTP endpoint
+   [b7a.observability.metrics]
    enabled=true
-   # Prometheus HTTP endpoint port. Metrics will be exposed in /metrics context.
-   # Eg: http://localhost:9797/metrics
-   port=9797
-   # Flag to indicate whether meter descriptions should be sent to Prometheus.
-   descriptions=false
-   # The step size to use in computing windowed statistics like max.
-   # The default is 1 minute.
-   step="PT1M"
+   reporter="prometheus"
+
+   [b7a.observability.metrics.prometheus]
+   port=9700
+   host="0.0.0.0"
 ```
 
 - Create a file `prometheus.yml` inside `/tmp/` location. Add the below configurations to the `prometheus.yml` file.
